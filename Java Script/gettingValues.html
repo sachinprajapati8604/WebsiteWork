@@ -1,0 +1,20 @@
+<!-- getting values from 1 text box to another text box and in page(like  h2 tag) -->
+<html>
+<head>
+<script>
+function get()
+{
+//alert("Function is Ok");
+var v1=document.getElementById("tb1").value;
+document.getElementById("tb2").value=v1;
+document.getElementById("tb3").innerHTML=v1;
+}
+</script>
+</head>
+<body>
+<input type="text" id="tb1" onkeypress="get()"/></br>
+<input type="button" onclick="get()" value="get"></br>
+<input type="text" id="tb2"/></br>
+<h2 id="tb3"></h2>
+</body>
+</html>

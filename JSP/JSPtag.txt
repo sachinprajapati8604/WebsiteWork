@@ -1,0 +1,6 @@
+JSP (JAVA SERVER PAGES)
+
+TAG--->
+<%   %> scriptlet tag
+<%=   > expression tag
+<%! %> declaration tag 

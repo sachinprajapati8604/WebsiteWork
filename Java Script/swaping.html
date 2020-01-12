@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script>
+            function Swap(){
+             var s1=document.getElementById("tv1").innerText;
+             var s2=document.getElementById("tv2").innerText;
+             var s3=document.getElementById("tv3").innerText;
+             var s4=document.getElementById("tv4").innerText;
+             var status=confirm("If u press OK name will be swaped");
+             if(status==true){
+                 document.getElementById("tv1").innerText=s4;
+                 document.getElementById("tv2").innerText=s3;
+                 document.getElementById("tv3").innerText=s2;
+                 document.getElementById("tv4").innerText=s1;
+             }else{
+                 alert("Yo have pressed Cancel");
+             }
+            }
+            </script>
+    </head>
+    <body>
+        <h3 id="tv1">Sachin Prajapati</h3>
+        <h3 id="tv2">Bullet Raja</h3>
+        <h3 id="tv3">40</h3>
+        <h3 id="tv4">1998</h3>
+        <button onclick="Swap()"> OK</button>
+    </body>
+</html>

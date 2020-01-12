@@ -1,0 +1,43 @@
+<html>
+<head>
+<title> Simple Calculator </title>
+<h1 align="center"> <font color="red"><b>Simple calculator in html !</b></font></h1>
+</head>
+<body bgcolor="skyblue" text="gold">
+<form name="calculator">
+<table border="1" align="center" width="200px">
+
+<tr>
+<td colspan="3"><input type="text" name="ans" value=""/></td>
+<td><input type="reset" value="c"/></td>
+</tr>
+<tr>
+<td><input type="button" value="7" onclick="document.calculator.ans.value+='7'"/></td>
+<td><input type="button" value="8" onclick="document.calculator.ans.value+='8'"/></td> 
+<td><input type="button" value="9" onclick="document.calculator.ans.value+='9'"/></td>
+<td><input type="button" value="+" onclick="document.calculator.ans.value+='+'"/></td>
+</tr>
+<tr>
+<td><input type="button" value="4" onclick="document.calculator.ans.value+='4'"/></td>
+<td><input type="button" value="5" onclick="document.calculator.ans.value+='5'"/></td>
+<td><input type="button" value="6" onclick="document.calculator.ans.value+='6'"/></td>
+<td><input type="button" value="-" onclick="document.calculator.ans.value+='-'"/></td>
+</tr>
+<tr>
+<td><input type="button" value="1" onclick="document.calculator.ans.value+='1'"/></td>
+<td><input type="button" value="2" onclick="document.calculator.ans.value+='2'"/></td>
+<td><input type="button" value="3" onclick="document.calculator.ans.value+='3'"/></td>
+<td><input type="button" value="*" onclick="document.calculator.ans.value+='*'"/></td>
+</tr>
+<tr>
+<td><input type="button" value="." onclick="document.calculator.ans.value+='.'"/></td>
+<td><input type="button" value="0" onclick="document.calculator.ans.value+='0'"/></td>
+<td><input type="button" value="=" onclick="document.calculator.ans.value=eval(document.calculator.ans.value)"/></td>
+<td><input type="button" value="/" onclick="document.calculator.ans.value+='/'"/></td>
+</tr>
+</table>
+</form>
+<address><i><b> <font color="black">created by<font color="green"> <u>Sachin Prajapati</u></font></font></b></i></address>
+
+</body>
+</html>

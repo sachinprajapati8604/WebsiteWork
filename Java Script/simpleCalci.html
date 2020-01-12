@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script>
+            function Add(){
+                //alert("Hii");
+                var n1=document.getElementById("tb1").value;
+                var n2=document.getElementById("tb2").value;
+                var sum=parseInt(n1)+parseInt(n2);
+                //document.write(sum);
+                document.getElementById("sp").innerHTML=sum;
+
+            }
+            function Sub(){
+                var n3=document.getElementById("tb1").value;
+                var n4=document.getElementById("tb2").value;
+                var sub=parseFloat(n3)-parseFloat(n4);
+                document.getElementById("sp").innerHTML=sub;
+            }
+            function Mul(){
+                var n3=document.getElementById("tb1").value;
+                var n4=document.getElementById("tb2").value;
+                var div=parseFloat(n3)*parseFloat(n4);
+                document.getElementById("sp").innerHTML=div;
+            }
+            function Div(){
+                var n3=document.getElementById("tb1").value;
+                var n4=document.getElementById("tb2").value;
+                var div=parseFloat(n3)/parseFloat(n4);
+                document.getElementById("sp").innerHTML=div;
+            }
+
+            </script>
+        </head>
+        <body>
+          Enter First Number   <input type="number" id="tb1"/> </br>
+          Enter second Number   <input type="number" id="tb2" /> </br>
+          Result <span id="sp"> ______</span> </br> </br>
+          <input  type="submit" value="+" onclick="Add()"/>
+          <input  type="submit" value="-" onclick="Sub()"/>
+          <input  type="submit" value="*" onclick="Mul()"/>
+          <input  type="submit" value="/" onclick="Div()"/>
+        </body>
+</html>

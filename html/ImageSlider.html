@@ -1,0 +1,43 @@
+<html>
+<head>
+<title> Image Slider Design</title>
+<style>
+body{
+background-color:rgba(47,40,38,0.75);
+}
+
+#sliderbox
+{
+width:800px;
+height:400px;
+position:absolute;
+background-image:url("https://images.pexels.com/photos/2290245/pexels-photo-2290245.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+background-size:800px 400px;
+margin-top:100px;
+margin-left:100px;
+transform:translate(-50px,-50px);
+box-shadow:1px 2px 10px 5px white;
+animation: sachin 20s infinite linear;
+
+}
+
+@keyframes sachin{
+
+0%{background-image:url("https://images.pexels.com/photos/2290245/pexels-photo-2290245.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");}
+20%{background-image:url("https://images.pexels.com/photos/2609777/pexels-photo-2609777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");}
+40%{background-image:url("https://images.pexels.com/photos/2592282/pexels-photo-2592282.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");}
+60%{background-image:url("https://images.pexels.com/photos/2479165/pexels-photo-2479165.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");}
+80%{background-image:url("https://images.pexels.com/photos/1881730/pexels-photo-1881730.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");}
+100%{background-image:url("https://images.pexels.com/photos/2527713/pexels-photo-2527713.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");}
+}
+</style>
+</head>
+<body>
+
+<div id="sliderbox">
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<html>
+<head>
+<style>
+#outer{
+min-height:1200px;
+min-width:1000px;
+background-color:rgba(0,0,255,0.3);
+}
+div {
+  width: 300px;
+  height: 100px;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+div#myDiv {
+  -ms-transform: rotate(20deg); 
+  -webkit-transform: rotate(20deg); 
+  transform: rotate(15deg); /* Standard syntax  or use given above syntax*/
+  //margin-top:100px;
+  
+}
+#trans {
+  transform: translate(50px, 100px);
+}
+sca{
+  transform: scale(2, 3);
+}
+ske{
+  transform: skew(20deg, 10deg);
+}
+mat{
+  transform: matrix(1, -0.3, 0, 1, 0, 0);
+}
+
+</style>
+</head>
+<body>
+<div id="outer">
+<h1>The rotate() Method</h1>
+<p>The rotate() method rotates an element clockwise or counter-clockwise.</p>
+
+<div>
+This a normal div element.
+</div>
+
+<div id="myDiv">
+This div element is rotated clockwise 20 degrees.
+</div>
+</br></br>
+<pre>CSS 2D Transforms Methods
+With the CSS transform property you can use the following 2D transformation methods:
+
+translate()
+rotate()
+scaleX()
+scaleY()
+scale()
+skewX()
+skewY()
+skew()
+matrix()</pre>
+<div id="trans">
+This a TRANSLATED  div element.
+</div> </br>
+<div id="sca">
+The scale() method increases or decreases the size of an element (according to the parameters given for the width and height).
+</div>
+<div id="ske">
+The skew() method skews an element along the X and Y-axis by the given angles.
+
+The following example skews the <div> element 20 degrees along the X-axis, and 10 degrees along the Y-axis:
+</div>
+<div id="mat">
+The matrix() method combines all the 2D transform methods into one.
+
+The matrix() method take six parameters, containing mathematic functions, which allows you to rotate, scale, move (translate), and skew elements.
+
+
+</div>
+
+</div>
+</body>
+</html>

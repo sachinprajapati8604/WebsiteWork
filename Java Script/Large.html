@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            function res(){
+                var n1=document.getElementById("tb1").value;
+                var n2=document.getElementById("tb2").value;
+                if(n1>n2){
+                    document.getElementById("sp").innerHTML="Large Number :"+n1;
+                }else{
+                    document.getElementById("sp").innerHTML="Large Number :"+n2;
+                }
+            }
+            </script>
+    </head>
+    <body>
+            Enter First Number   <input type="number" id="tb1"/> </br>
+            Enter second Number   <input type="number" id="tb2" /> </br>
+            Result = <span id="sp"> ______</span> </br> </br>
+            <input  type="submit" value="Evaluate" onclick="res()"/>
+    </body>
+</html>

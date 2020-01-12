@@ -1,0 +1,1 @@
+Emirp:-->>Emirp means,a number which is a prime number and its reverse is also a prime number.

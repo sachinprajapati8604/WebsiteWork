@@ -1,0 +1,523 @@
+
+<!DOCTYPE HTML><html>
+<head><title>National Train Enquiry System -Indian Railways </title>
+<script>
+var _TRAIN_NO_FROM_MAP = null, _STN_FROM_MAP = null, _START_DATE_FROM_MAP = null; 
+var _SHOW_MAP_IN_APP = true;
+var HIDE_MAP_FOR_TEST = false;
+var MAX_LENGTH_TRN_DATA = 15;
+var SHOW_DISTANCES = true;
+var RESCH_BY_MIN_MINUTES = 10;
+
+</script>
+
+<META name="Accept-encoding" content="gzip,deflate"><META name="Content-Encoding" content="gzip,deflate">
+<meta name="robots" content="noarchive"/>
+<meta name="description" content="Official Indian Railways site for travelers using railways for taking holiday vacation trips, official trips, tours, and daily commute. Site provides train-running related and real-time status queries for all trains of India.">
+<meta name="keywords" content="India Travel, Indian Railways, Trains, Travel across India, Things to do in India,Train Station, Time Table, Train Schedules, Train Arrivals, Train Delays, Online Tracking, Mobile Tracking, Cheap Travel, yatra,Journey Planner, Trip Planner,Train Enquiry,Train Running,Train Running Status,Train Running Information,Spot Your Train,Live Train Status,Ntes,National Train Enquiry System,Rescheduled trains,diverted trains,cancelled trains">
+<link rel="icon" type="image/jpeg" href="imgs/LogoNTES.jpg">
+<script>
+function loadJSFile(t,r,e,n){var c,a=r+"_modifiedAt",i=function(t){document.write(t)};try{c=localStorage;
+var s=c[r];if(s&&c[a]&&c[a]==e&&(i("\r\n<scr"),i("ipt>\r\n"),i(s),i("</scr"),i("ipt>\r\n"),s.length>n))return 0}catch(o){}
+var h=t+"?"+e+"=1";i("\r\n<scr"),i('ipt src="'),i(h),i('"></scr'),i("ipt>\r\n");var u=new XMLHttpRequest;
+return u.onreadystatechange=function(){if(4==this.readyState&&200==this.status){try{c[r]=this.responseText}catch(t){}
+try{c[a]=e}catch(t){}}},u.open("GET",h,!0),u.send(),0}
+
+function loadCSSFile(e,t,n,a){var r,s=t+"_modifiedAt",c=function(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)};
+try{r=localStorage;var i=r[t];if(i&&r[s]&&r[s]==n&&(c(i),i.length>a))return 0}catch(o){}var d=e+"?"+n+"=1",h=new XMLHttpRequest;
+return h.onreadystatechange=function(){if(4==this.readyState&&200==this.status){c(this.responseText);try{r[t]=this.responseText}catch(e){}
+try{r[s]=n}catch(e){}}},h.open("GET",d,!0),h.send(),0}
+</script>
+<LINK href="//code.jquery.com/ui/1.12.1/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css">
+
+<script>loadCSSFile("theme/ntes.css", "ntesCSS_ContentOldNTES", "2018-05-16 16:50", 500);</script>
+<script>
+var _STNS_DATA_JS_CHANGE_TIME = "1561440248319";
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89952719-3"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-89952719-3');
+</script>
+<script>
+
+loadJSFile("js/mainAndEnUS.js", "mainAndEnUSJS_contentNTES", "2019-04-25 12:40", 500);</script>
+<script src="https://maps.googleapis.com/maps/api/js?client=gme-centreforrailways&v=quarterly&language=en&region=IN" async defer></script>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.1.0/leaflet.polylineDecorator.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LcDDocUAAAAAKiRPV5P7Yv0eVdhB_Ms0parnO6i"></script><script>
+grecaptcha.ready(function() {
+ var trnInpt = _id("trainInput");
+ setTimeout(function() { try { trnInpt.disabled=true; } catch(ex){} }, 1);
+ loadGReptchaV3({fn:function() {
+	 setTimeout(function() { try { with(trnInpt){disabled=false; focus();} } catch(ex){} }, 1);
+ }, action: "root"});
+});
+</script>
+<script>var GRCPTCHAV3_ENABLE = 1;</script>
+</head>
+<body onload="setInterval(removeCloseToolTipFromDialog, 5000);disableBackBtn();">
+<TABLE border=0 id=upperMostTbl cellpadding=0 cellspacing=0 align=center style="width:99%;">
+	<TBODY>
+		<TR>
+			<td id=leftMostTD valign=top><table border=0 cellpadding=0 cellspacing=0 class="leftMenusOuterTbl ui-state-default ui-corner-all">
+<tr>
+<td>
+<table border=0 cellpadding=0 cellspacing=0 class=leftMenus>
+<tbody>
+<tr>
+<td valign=middle>
+<img src="imgs/lightbluecircle.png">
+<A href="specialTrains.jsp" target=_blank>Special trains </A> 
+<BR><BR><img src="imgs/lightbluecircle.png">
+<A href="heritageTrains.jsp" target=_blank>Heritage trains </A> 
+<BR><BR><img src="imgs/lightbluecircle.png">
+<A href="fog.jsp" target=_blank>Fog affected trains </A> 
+<span style="display:none;">(<img src="imgs/new-event.gif" style="width:19px;height:9px;">)</span>
+<BR><BR></td>
+</tr>
+
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+<table border=0 cellpadding=0 cellspacing=0 style="height:175px;" class="leftMenusOuterTbl ui-state-default ui-corner-all">
+<tr>
+<td>
+<table border=0 cellpadding=0 cellspacing=0 class=leftMenus>
+<tbody>
+<tr>
+<td valign=middle>
+<img src="imgs/lightbluecircle.png">
+<A href="http://www.indianrail.gov.in/pnr_Enq.html" target=_blank>PNR enquiry </A>
+<BR><BR>
+
+<img src="imgs/lightbluecircle.png">
+<A href="http://www.indianrail.gov.in" target=_blank>Seat/berth availability </A>
+<BR><BR>
+
+<img src="imgs/lightbluecircle.png">
+<A href="https://www.irctc.co.in" target=_blank>Seat/berth booking </A>
+
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+</td>
+			<TD id=upperMostTD valign=top>
+<div style="width:99%;"><table border=0 cellpadding=0 cellspacing=0 id=headerTblMain style="width:100%;">
+	<tbody>
+	<tr>
+		<td valign=top nowrap align=right style="width:50px;">
+			<img src="imgs/emblem.jpg" width=45px height=70px align=middle onclick="window.open('http://india.gov.in/');" alt="National Portal of India " title="National Portal of India " onload="setTimeout(function(){TRN_TYPE_COLS.regForGreyScale(this);},1);">
+		</td>
+		<td align=left valign=middle style="vertical-align:middle;text-align:left;">
+			<span class=pageHdng title="Home " onclick="document.location='/ntes/index.html';" style="cursor:pointer;cursor:hand;">National Train Enquiry System </span>
+		</td>
+		<td style="width:55px;"><img src='imgs/toggleCol.png' width=20px height=20px id=toggleCols style="cursor:hand;cursor:pointer;" /></td>
+		<td style="width:70px;">
+		<div id="sizer" style="pposition:absolute;rright:6cm;ttop:1cm;"><img 
+			onclick="incrFontSize()" src="imgs/plus.gif" alt="Increase text size " title="Increase text size " style="margin-left:4px;" /><img 
+			onclick="decrFontSize()" src="imgs/minus.gif" alt="Decrease text size " title="Decrease text size " style="margin-left:4px;" /><img 
+			onclick="resetFontSize()" src="imgs/reset.gif" alt="Reset text size " title="Reset text size " style="margin-left:4px;" /></div></td>
+		<td valign=middle style="vertical-align:middle;width:85px;white-space:nowrap;text-align:center;" nowrap>
+			<img src="imgs/logo_rly_blue.png" width=75px height=75px onclick="window.open('http://www.indianrailways.gov.in/');" alt="Indian Railway " title="Indian Railway " onload="setTimeout(function(){TRN_TYPE_COLS.regForGreyScale(this);},1);">
+		</td>
+		<td valign=middle style="vertical-align:middle;width:85px;white-space:nowrap;text-align:right;" nowrap align=right>
+			<img src="imgs/cris_logo.jpeg" width=80px height=60px onclick="window.open('http://www.cris.org.in/');" alt="Center for railway information systems " title="Center for railway information systems " align=middle onload="setTimeout(function(){TRN_TYPE_COLS.regForGreyScale(this);},1);">
+		</td>
+	</tr>
+	<tr>
+	<td colspan=4>
+<span id=flashMsg1 onclick="showMarqueeTxtInDialog(this)">
+<MARQUEE width="99%" class=marquee onmouseover="this.setAttribute('scrollamount',0, 0);" onmouseout="this.setAttribute('scrollamount',6,0);" scrolldelay=100 scrollamount=3>
+<span style="display:none">Due to planned maintenance activity, Current updates on NTES website/Mobile App will not be available between  01:00 Hrs to 03:00 Hrs on 19.05.2019, inconvenience caused is deeply regretted.</span></MARQUEE>
+</span>
+	</td>
+	</tr>
+	</tbody>
+</table>
+</div>
+<TABLE border=0 cellpadding=0 cellspacing=0 width="99%">
+	<TBODY>
+		<TR>
+<TD valign=top style="vertical-align:top;">
+<div id="tabs" style="width:99%;margin-top:3px;hheight:500px;">
+	<ul style="width:99%;">
+	<li title="Train schedule/running "><a href="#tabs-1">Spot Your Train </a></li>
+	<li title="Trains coming to/leaving a station "><a href="#tabs-2">Live Station </a></li>
+	<li title="Trains between any two stations "><a href="#tabs-3">Trains Between Stations </a></li>
+	<li><a href="#tabs-4">Train schedule </a></li>
+	<li title="All Cancelled trains "><a href="#tabs-5">Trains Cancelled </a></li>
+	<li title="All Rescheduled trains "><a href="#tabs-6">Rescheduled </a></li>
+	<li title="All Diverted trains "><a href="#tabs-7">Diverted </a></li>
+	<li title="IR Train Tracker(Google)"><a href="#tabs-8"><span class=mapTabTxt>IR Train Tracker(Google) </span></a></li>
+	<li title="IR Train Tracker(Bhuvan) "><a href="#tabs-9"><span class=mapTabTxt>IR Train Tracker(Bhuvan) </span></a></li><li title="Average delay of a train at all its public stoppage stations for last 7 days  "><a href="#tabs-10">Avg Delay </a></li>
+	</ul>
+	<div id="tabs-1">
+	<div style="max-width:1150px;">
+	<table border=0 cellpadding=0 cellspacing=0 id=trainInputTable width=99%>
+		<tbody>
+		<TR>
+			<TD valign=middle id=trainInputTD><font class=trnInputLabel>Enter train name/No. <font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font></font> 
+			<input name=trainInput id=trainInput maxlength=30 size=30>
+			<A href="help/english/spotYourTrainEng.html" target=_blank id=spotUrTrnHlpIcon class=helpIconAnchor><img src="imgs/help-icon.png" align=middle></A>
+			</TD>
+			<TD style="text-align:left">
+			<table border=0 cellpadding=0 cellspacing=0><tr><td>
+		<table id=trnSchIcon border=0 cellpadding=0 cellspacing=0 onclick="showTrainSchedule(null, null, null)" style="display:none;"><tbody>
+		<tr><td><img align=middle src="imgs/trnSch.gif" width=16px height=16px></td></tr>
+		<tr><td>Train Schedule </td></tr>
+		</tbody></table>
+			</td>
+			<td>
+		<img align=middle src="imgs/trnDataProgress.gif" id=loadingSttsImg>
+		<font id=trnNotFoundMsg class=redColorClass>No train found</font>
+			</td>
+			</tr>
+			</table>
+			</TD>
+			<TD align=left><button id=backToTrainSearchBtn onclick="resetTrainSearch()" style="display:none;">New Search </button></TD>
+			<TD style="text-align:right;width:175px;" id=runsOnDays>&nbsp;</TD>
+		</TR>
+		</tbody>
+	</table>
+	<table border=0 cellpadding=3 cellspacing=0 width=99% id=trainDetTbl height=60px>
+		<tbody>
+		<TR>
+			<TD><font id=trainName></font></TD>
+			<td align=right style="text-align:right;" colspan=2><span class=trnInputLabel>Train type :</span> <span id=trainType></span></td>
+		</TR>
+		<TR>
+			<TD width=300px nowrap id=trnSrcDstn>&nbsp;</TD>
+			<td id=trnValidityMsg></td>
+			<td align=right style="text-align:right;width:150px;" valign=middle nowrap>
+			<button id=showAllInstancesBtn onclick="showAllInstances()">All Running Instances </button>
+			</td>
+		</TR>
+		</tbody>
+	</table>
+	<HR>
+	<table id=passThrStnTbl width=99% border=0 cellpadding=0 cellspacing=0 style="height:54px;">
+		<tbody>
+		<tr>
+			<td valign=middle style="width:250px;"><font class=trnInputLabel>Journey/Boarding/Arrival station <font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font><BR>
+				</font> <INPUT name=passThrStn id=passThrStn size=30>
+				<img src="imgs/popupStns.png" style="display:none;" width=18px
+					height=18px align=top border=0 id=passThrStnPopupOpen title="Show Station List">
+			</td>
+			<td valign=middle align=left style="width:185px;">
+				<font class=trnInputLabel>Journey/Boarding/Arrival date </font><font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font><BR>
+				<INPUT name=trainStartDate id=trainStartDate readonly class=startDate size=11>
+			</td>
+			<td valign=middle align=left>
+				<fieldset class=boardDeboardGrp>
+				<legend>Boarding /DeBoarding </legend>
+				<label id=boardDebaordLabel0 for="boardDeboard0" class=roundedBorderForRadios><font class=trnInputLabel id=boardDebaordLbl0 style="color:#444444;">Boarding </font></label>
+				<input type="radio" name="boardDeboard" id="boardDeboard0" checked onclick="boardDeboardSel();">
+				<label id=boardDebaordLabel1 for="boardDeboard1" class=roundedBorderForRadios><font class=trnInputLabel id=boardDebaordLbl1>DeBoarding </font></label>
+				<input type="radio" name="boardDeboard" id="boardDeboard1" onclick="boardDeboardSel();">
+				</fieldset>
+			</td>
+		</tr>
+		<TR>
+			<TD id=selPassThrStnDetail colspan=2 style="height:25px;"></TD>
+		</TR>
+		</tbody>
+	</table>
+	<hr id=fullInstHR>
+	<div id=trainInstancesDiv class="ui-tabs-anchor">
+	<table border=0 cellpadding=0 cellspacing=0 style="width:100%;" id=trainInstancesTbl><tbody><tr><td id=trainInstances></td></tr></tbody></table>
+	</div>
+	<span id=newEnquirySite>
+		<a href="/xyzabc/" target=_blank style="color:blue;text-decoration:underline;font-weight:normal;">Click here to try new train enquiry website </a>
+	</span>
+	<span id=trainsAtAGlanceLink>
+	<a href="http://www.indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,1,304,366,537,1774" style="color:blue;text-decoration:underline;font-weight:normal;" target="_blank">
+		Trains at a Glance November 2017 - June 2018 </a>
+	</span>
+	</div>
+	</div>
+	<div id="tabs-2">
+	<BR>
+	<table width=99% cellpadding=0 cellspacing=0 border=0>
+	<tbody><tr><td align=center>
+		<div id=viaStnOutTblDiv class="ui-state-default ui-corner-all ui-tabs-active uui-state-active">
+		<table class=viaStnOutTbl cellpadding=0 cellspacing=0 border=0 align=center align=left style="text-align:left;">
+		<tbody>
+		<tr>
+		<td align=left style="text-align:left;">Enter station to get trains </td>
+		<td colspan=5 align=left style="text-align:left;">Going to (Optional) </td>
+		</tr>
+		<tr>
+		<td align=left style="text-align:left;" valign=middle style="vertical-align:middle;" nowrap>
+		<font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font>
+		<input id=viaStation size=20 maxlength=30></td>
+		<td align=left style="text-align:left;" valign=middle style="vertical-align:middle;" nowrap>
+		<input id=viaStation_to size=20 maxlength=30></td>
+		<td align=center valign=middle style="vertical-align:middle;text-align:center;" nowrap>
+		Within <input name=viaStnWithinHrs id=viaStnWithinHrs style="text-align:center;" value=2 readonly>
+		Hrs. </td>
+		<td align=left style="text-align:left;"><select name=selTrnTypViaStn id=selTrnTypViaStn class=trnTypDrpDwn></select></td>
+		<td valign=middle style="vertical-align:middle;text-align:center;padding:2px;" nowrap>
+		<button id=viaStnGoBtn onclick="getTrainsFromToStation(null)">Go </button>
+		</td>
+		<td align=right style="text-align:right;padding:2px;"><input id=clearViaStn type=button value="Clear " onclick="clearTrnViaStnTxt()"></td>
+		</tr></tbody>
+		</table>
+		</div>
+	</td></tr></tbody>
+	</table>
+	</div>
+	<div id="tabs-3">
+	<div id=trbBwStnsOutTblDiv class="ui-state-default ui-corner-all ui-tabs-active uui-state-active">
+	<table cellpadding=0 cellspacing=0 border=0 class=viaStnOutTbl><tbody>
+	<tr>
+	<td align=left style="text-align:left;" nowrap><span class=trnInputLabel>From<font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font></span><input id=station1 size=30 maxlength=30></td>
+	<td align=left style="text-align:left;" nowrap><span class=trnInputLabel>To<font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font></span><input id=station2 size=30 maxlength=30></td>
+	<td align=left style="text-align:left;padding-right:5px;"><select name=selTrnTypTrnBwStn id=selTrnTypTrnBwStn class=trnTypDrpDwn></select></td>
+	<td rowspan=2 align=left style="text-align:left;padding-left:5px;border-left:solid 1px #E0E0E0;"><input id=trnBwStnsGoBtn type=button value="Go " onclick=getTrainsBwStns()></td>
+	<td rowspan=2 align=left style="text-align:left;padding-left:5px;"><input id=swapTrnBwStns type=button value="Swap " onclick=swapTrainsBwStnsTxt()></td>
+	<td rowspan=2 width=70px>&nbsp;</td>
+	<td rowspan=2 align=right style="text-align:right;"><input id=clearTrnBwStns type=button value="Clear " onclick=clearTrnBwStnsTxt()></td>
+	</tr>
+	<tr>
+	<td colspan=3 style="border-top:solid 1px #E0E0E0;">
+	<table cellpadding=0 cellspacing=0 border=0 style="width:99%;"><tbody><TR>
+	<TD style="width:140px;text-align:right;">Via Station </TD>
+	<TD style="text-align:left;width:190px;"><input id=viaStnInTrnBwStns></TD>
+	<TD><input type=button value="Remove Via Station " id=clearBtnViaStnTrnBwStn onclick="clearViaStnTrnBwStn()"></TD></TR></tbody></table>
+	</td>
+	</tr>
+	</tbody></table>
+	</div>
+	<div id=trnBwStnDiv>Enter station names/codes to get direct trains between stations </div>
+	</div>
+	<div id="tabs-4">
+	<div style="max-width:1100px;">
+	<table border=0 cellpadding=0 cellspacing=0 id=futureTrainInputTable width=100%>
+		<tbody>
+		<TR>
+			<TD valign=middle nowrap style="white-space:nowrap;width:370px;"><font class=trnInputLabel>Enter train name/No. <font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font></font>
+			<input name=futureTrainInput id=futureTrainInput maxlength=30 size=20>
+			</TD>
+			<TD>
+			<font class=trnInputLabel>Starts on </font>
+			<input name=startDateFuture id=startDateFuture readonly class=startDate>
+			</TD>
+			<TD style="text-align:left">
+			<table border=0 cellpadding=0 cellspacing=0><tr>
+			<td>
+		<img align=middle style="display:inline;" src="imgs/trnDataProgress.gif" width=54px height=17px id=futureTrnLoadingSttsImg>
+		<font id=futureTrnNotFoundMsg class=redColorClass>No train found</font>
+			</td>
+			</tr>
+			</table>
+			</TD>
+			<TD align=left><button id=backToFutureTrainSearchBtn onclick="resetFutureTrainSearch()" style="display:none;">New Search </button></TD>
+			<TD style="text-align:right;width:175px;" id=futureTrnRunsOnDays>&nbsp;</TD>
+		</TR>
+		</tbody>
+	</table>
+	<table style="display:none;" border=0 cellpadding=3 cellspacing=0 width=100% id=futureTrainDetTbl height=60px>
+		<tbody>
+		<TR>
+			<TD><font id=futureTrainName></font></TD>
+			<td id=trnVldFutTrn></td>
+			<td align=right style="text-align:right;"><span class=trnInputLabel>Train type :</span> <span id=futureTrainType></span></td>
+		</TR>
+		<TR>
+			<TD nowrap id=futureTrnSrcDstn style="white-space:nowrap;padding-right:5px;">&nbsp;</TD>
+			<td colspan=2 id=futurePrintTrnSchTD align=right style="text-align:right;"></td>
+		</TR>
+		<TR style="display:none;">
+			<TD colspan=3 align=center style="text-align:center;" valign=middle nowrap>
+			<button id=futureTrnShowAllInstancesBtn onclick="showFutureTrainSchedule(null, null)">Train Schedule </button>
+			</TD>
+		</TR>
+		</tbody>
+	</table>
+	<DIV id=futureTrnSchDiv></DIV>
+	</div>
+	</div>
+	<div id="tabs-5"></div>
+	<div id="tabs-6"></div>
+	<div id="tabs-7"></div>
+	<div id="tabs-8"></div><div id="tabs-9"></div><div id="tabs-10">
+	<div style="max-width:1100px;">
+	<table border=0 cellpadding=0 cellspacing=0 id=avgDelayTrainInputTable width=100%>
+		<tbody>
+		<TR>
+			<TD valign=middle nowrap style="white-space:nowrap;width:370px;"><font class=trnInputLabel>Enter train name/No. <font class=redColorClass style="font-size:13px;font-weight:bold;"><B>*</B></font></font>
+			<input name=avgDelayTrainInput id=avgDelayTrainInput maxlength=30 size=20>
+			</TD>
+			<TD style="text-align:left">
+			<table border=0 cellpadding=0 cellspacing=0><tr>
+			<td>
+		<img align=middle style="display:inline;" src="imgs/trnDataProgress.gif" width=54px height=17px id=avgDelayTrnLoadingSttsImg>
+		<font id=avgDelayTrnNotFoundMsg class=redColorClass>No train found</font>
+			</td>
+			</tr>
+			</table>
+			</TD>
+			<TD align=left><button id=backToAvgDelayTrainSearchBtn onclick="resetAvgDelayTrainSearch()" style="display:none;">New Search </button></TD>
+			<TD style="text-align:right;width:175px;" id=avgDelayTrnRunsOnDays>&nbsp;</TD>
+		</TR>
+		</tbody>
+	</table>
+	<table style="display:none;" border=0 cellpadding=3 cellspacing=0 width=100% id=avgDelayTrainDetTbl height=60px>
+		<tbody>
+		<TR>
+			<TD><font id=avgDelayTrainName></font></TD>
+			<td id=trnVldAvgDelayTrn></td>
+			<td align=right style="text-align:right;"><span class=trnInputLabel>Train type :</span> <span id=avgDelayTrainType></span></td>
+		</TR>
+		<TR>
+			<TD nowrap id=avgDelayTrnSrcDstn style="white-space:nowrap;padding-right:5px;">&nbsp;</TD>
+			<td colspan=2 id=avgDelayPrintTrnSchTD align=right style="text-align:right;"></td>
+		</TR>
+		<TR style="display:none;">
+			<TD colspan=3 align=center style="text-align:center;" valign=middle nowrap>
+			<button id=avgDelayTrnShowAllInstancesBtn onclick="showAvgDelayTrainSchedule(null, null)">Train Schedule </button>
+			</TD>
+		</TR>
+		</tbody>
+	</table>
+	<DIV id=avgDelayTrnSchDiv></DIV>
+	</div>
+	</div>
+<span id=welcomeMsg>
+Indian Railways wishes passengers a safe and comfortable journey. </span>
+</div>
+<div class="ui-corner-all" style="border:solid 1px #E0E0E0;width:99%;margin-top:1px;ffloat:left;" class=disclaimerDv>
+<table cellpadding=6 border=0 cellspacing=0 align=center width=100%><tbody>
+
+<tr bgcolor="#F3F3F3">
+<td style="padding:2px;" rowspan=2>
+<a title="The national portal of India" href="//india.gov.in" target=_blank><img alt="The national portal of India" src="imgs/national-portal.gif" width=120px height=33px></a>
+</td>
+<td class=starMandateTxt colspan=2>
+ <span>Fields with <span style="color:red;">*</span> are mandatory.</span>
+ <span id=curTimeDispSpan>Time: 00/00/0000 00:00:00</span>
+ <span>Last updated: 03/05/2019 14:38</span>
+</td>
+<td class=bottomLinks>
+<a href="/ntes">Home</a> <B>|</B> 
+<a href="giveFeedbackAll.jsp">Feedback</a> <B>|</B> 
+<a href="others/disclaimerDisplay.html" target="_blank">Terms and conditions</a> <B>|</B> 
+<a href="aboutUsEng.jsp" target=_blank>About us</a> <B>|</B> 
+<a href="http://indianrailways.gov.in/" target=_blank>Contact us</a> <B>|</B> 
+<A href="javascript:setLanguage('props.hi-in')">हिन्दी</A>
+</td>
+</tr>
+<tr bgcolor="#F3F3F3">
+<td class=copyrightMsg>
+<span style="display:none;">Copyright &copy; 2013, Center For Railway Information Systems, Designed and Hosted by CRIS </span>
+</td>
+<td style="white-space:nowrap;color:#666666;font-size:11px;">Version 3.0.0</td>
+<td style="width:400px;text-align:right;padding-right:2px;">
+<a href="https://itunes.apple.com/us/app/ntes/id1033073796?ls=1&mt=8" target="_blank" title="iOS App"><img src="imgs/app/Apple_logo_black.png" border=0 width=24px height=24px align=bottom onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+<a href="https://play.google.com/store/apps/details?id=cris.icms.ntes" target="_blank" title="Android App"><img src="imgs/app/Google_Play_logo.png" border=0 width=24px height=24px align=bottom onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+<a href="http://apps.microsoft.com/windows/app/ntes-app/89411fb9-c684-43c0-92fc-8ca20737fabf" target="_blank" title="Windows Desktop App"><img src="imgs/app/windows_desktop_app.png" border=0 width=24px height=24px align=bottom onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+<a href="https://www.windowsphone.com/en-in/store/app/ntes/3e1db671-34b0-4597-9358-91061cc8611e" target="_blank" title="Windows Phone App"><img src="imgs/app/Windows_logo.svg.png" border=0 width=24px height=24px align=bottom onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<a style="display:none;" href="RSSFeed.xml" target="_blank" title="RSS Feed"><img src="imgs/Feed-icon.svg" border=0 width=24px height=24px align=bottom onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+<a href="https://www.facebook.com/RailMinIndia" target=_blank><img src="imgs/facebook_icon.png" border=0 width=24px height=24px align=bottom title="Facebook" onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+<a href="https://twitter.com/RailMinIndia" target=_blank><img src="imgs/twitter_icon.png" border=0 width=24px height=24px align=bottom title="Twitter" onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+<a href="https://www.youtube.com/user/RailMinIndia" target="_blank"><img src="imgs/youtube_icon.png" border=0 width=24px height=24px align=bottom title="YouTube" onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+<a style="display:none;" href="mailto:ir.ntes@gmail.com" target=_blank><img src="imgs/mailtous.png" border=0 width=24px height=24px align=bottom onload="iconColorsOnMouseOut(this)" onmouseover="iconColorsOnMouseIn(this)" onmouseout="iconColorsOnMouseOut(this)"></a>
+</td>
+</tr>
+</tbody></table>
+</div>
+<script>
+$(function() {
+	addCurrentDateDisplay("curTimeDispSpan");
+});
+
+</script>
+</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<table id=legendTbl class=legendTbl border=0 cellpadding=0 cellspacing=0 style="display:none;">
+<tbody>
+<tr>
+<th width=80px align=center>Legend </th>
+<th width=200px align=left style="border-right:solid 1px E0E0E0;">Description </th>
+<th width=80px align=center>Legend </th>
+<th width=200px align=left>Description </th>
+</tr>
+<tr>
+<td style="color:red" align=center><img id=curStnDownArrowLegend1 src='imgs/green-down-arrow.png' align=middle width=10px height=10px></td>
+<td align=left style="border-right:solid 1px #E0E0E0;">Train is at this station </td>
+<td style="color:red" align=center><img id=curStnDownArrowLegend2 src='imgs/green-down-arrow.png' align=middle width=10px height=10px></td>
+<td align=left>Train departed from this station </td>
+</tr>
+<tr>
+<td style="color:blue" align=center><img src='imgs/circle_blue.png' align=middle width=10px height=10px></td>
+<td align=left style="border-right:solid 1px #E0E0E0;">The queried station </td>
+<td align=center><font class=redColorClass>T</font></td>
+<td align=left>Terminated at current station </td>
+</tr>
+<tr>
+<td align=center>ETA </td>
+<td align=left style="border-right:solid 1px #E0E0E0;">Expected time of arrival </td>
+<td align=center>ETD </td>
+<td align=left>Expected time of departure </td>
+</tr>
+<tr>
+<td align=center>ATA </td>
+<td align=left style="border-right:solid 1px #E0E0E0;">Actual time of arrival </td>
+<td align=center>ATD </td>
+<td align=left>Actual time of departure </td>
+</tr>
+<tr>
+<td align=center>RT </td>
+<td align=left style="border-right:solid 1px #E0E0E0;">Right time </td>
+<td align=center><span class=expStar>*</span></td>
+<td align=left>Expected Time (May likely change) </td>
+</tr>
+<tr>
+<td align=center>U.A. </td>
+<td style="border-right:solid 1px #E0E0E0;">Update awaited </td>
+<td align=center class="w3-text-red">CNC </td>
+<td>Cancelled at this station  </td>
+</tr>
+<tr>
+<td align=center>PF </td>
+<td style="border-right:solid 1px #E0E0E0;">Expected platform </td>
+<td align=center>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table></TD>
+</TR>
+</TBODY></TABLE>
+<table style="display:none;width:95%;" id=printTbl><tbody><TR><TD id=printTblTD></TD></TR></tbody></table>
+<SPAN style="display:none;" id=txtAriasDiv>
+<textarea rows="40" style="width:98%" id=txtAria style="background-color: #BBBBBB; color: #444444; border: 0"></textarea>
+<HR>
+<textarea rows="20" style="width:98%" id=txtAria0 style="background-color: #BBBBBB; color: #444444; border: 0"></textarea>
+</SPAN>
+<SPAN id=passThrStnPopup title="Select Station" style="display:none;"></SPAN>
+<SPAN style="position:absolute;right:10px;bottom:10px;background-color:#F0F0F0;" onclick="if(this.showTxtAria){_id('txtAriasDiv').style.display='none';this.showTxtAria=false;}else{_id('txtAriasDiv').style.display='';this.showTxtAria=true;}">&nbsp;</SPAN>
+<script>
+setInterval(function() {
+	$.ajax({url: "IAmAlive?t=" + new Date().getTime()});
+	console.log("IAmAlive");
+}, 5*60*1000);
+</script>
+</body>
+</html>
