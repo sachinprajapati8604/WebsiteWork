@@ -23,7 +23,7 @@ body {
 <body>
 
 <!--NAvbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="#">BUBooks.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -50,6 +50,9 @@ body {
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="bookmenu.html">Books</a>
           <a class="dropdown-item" href="papermenu.html">Papers</a>
+		  <a class="dropdown-item" href="syllabus.html">Syllabus</a>
+		  <a class="dropdown-item" href="programmingBook.html">Programming Books</a>
+          
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="feedback.php">Give Feedback</a>
         </div>

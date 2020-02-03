@@ -78,6 +78,9 @@ document.FeedbackForm.reset();
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="bookmenu.html">Books</a>
           <a class="dropdown-item" href="papermenu.html">Papers</a>
+		  <a class="dropdown-item" href="syllabus.html">Syllabus</a>
+		  <a class="dropdown-item" href="programmingBook.html">Programming Books</a>
+          
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="feedback.php">Give Feedback</a>
         </div>
